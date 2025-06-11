@@ -1,0 +1,99 @@
+
+<!-- MAIN Modal -->
+    <form action="/user/<%=currentUser.username%>/journal" method="POST" novalidate class="validated-form"> 
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" name="journal[question]" class="q-input-main" value="<%=question%>" placeholder="<%=question%>" hidden>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel"><%=question%></h1>
+                    <button class="bg-body border-0 position-relative ms-auto" onclick="window.location.reload()">
+                        <%-include("./refreshIcon.ejs") %>
+                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="form-floating modal-body">
+                    <textarea class="form-control lh-lg journal-entry" name="journal[entry]" id="floatingTextarea" style="height:250px ;" placeholder="Write journal entry here"  minlength="10" maxlength="350" required></textarea>
+                    <label for="floatingTextarea" class="ms-3 my-3" name="date"><%=new Date().toLocaleDateString("en-GB")%></label>
+                    <input type="text" name="journal[username]" value="<%=currentUser.username %>" hidden>
+                    <input type="text" name="journal[date]" value="<%= new Date().toLocaleDateString("en-GB") %>" hidden>
+                    <input type="text" name="journal[time]" value="<%= new Date().toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit"}) %>" hidden>
+                    
+                    <div class="invalid-feedback">
+                        Entry text must be between 10-350 characters
+                    </div>
+                </div>
+                
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success entry-submit-btn">Submit</button>
+                    
+                    <%-include("../partials/colors.ejs") %>
+
+                    <!-- PUBLIC / PRIVATE SELECTION -->
+                     <input type="text" name="journal[status]" value="private" id="entryStatus" hidden>
+
+                    <div class="btn-group dropend ">
+                        <button type="button" class="btn btn-light status-btn dropdown-toggle" 
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                            <%- include("../partials/privateIcon.ejs") %>
+                    </button>
+                        <ul class="dropdown-menu">
+                            <li class="private-icon ps-2">
+                            <%- include("../partials/privateIcon.ejs") %>
+                            Private
+                        </li>
+                        <li class="public-icon ps-2">
+                            <%- include("../partials/publicIcon.ejs") %>
+                            Public
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Icons private and public (hidden) -->
+<div id="publicIconTemplate" style="display: none;">
+  <%- include("../partials/publicIcon.ejs") %>
+</div>
+<div id="privateIconTemplate" style="display: none;">
+  <%- include("../partials/privateIcon.ejs") %>
+</div>
+
+
+<script>
+    //     const privateIconTemplate = document.getElementById("privateIconTemplate").innerHTML;
+    // const publicIconTemplate = document.getElementById("publicIconTemplate").innerHTML;
+
+    // const colorBox = document.querySelector(".color-box");
+
+    // // MAIN MODAL
+    //     const journalBox = document.querySelector(".journal-entry")
+    //     const publicIcon = document.querySelector(".public-icon")
+    //     const privateIcon = document.querySelector(".private-icon")
+    //     const statusBtn = document.querySelector(".status-btn")
+    //     const entryStatus = document.querySelector("#entryStatus")  
+
+    //     colorBox.addEventListener("change", (event) => {
+    //         const color = event.target.value;
+    //         event.target.style.backgroundColor = color;
+    //         journalBox.style.backgroundColor = color;
+    //     })
+    //     publicIcon.addEventListener("click", () => {
+    //         statusBtn.innerHTML = publicIconTemplate;
+    //         entryStatus.value = "public"
+    //     })
+    //     privateIcon.addEventListener("click", () => {
+    //         statusBtn.innerHTML = privateIconTemplate;
+    //         entryStatus.value = "private"
+    //     })
+
+
+
+</script>

@@ -1,0 +1,36 @@
+<% layout("layout/boilerplate") %>
+<%if(currentUser) { %>
+    <%-include("./partials/mainModal") %>
+<% } %>
+
+    <div class="container">
+        <h1 class="mb-5">See how others are doing today</h1>
+    </div>
+
+    <div class="container row justify-content-center">
+            <% feedEntries.forEach((entry) => { %> 
+                <div class="card rounded-0 shadow mb-4 mx-3" style="width: 20rem; background-color:<%=entry.color%>;">
+                    <div class="card-body" style="justify-self: center; max-width: 20rem; ; max-height: 23.5rem; min-height: 23.5rem;">
+                        <% let rand = Math.floor(Math.random() * 9) +1 %>
+                        <%-include(pinPartial + rand)%>
+
+                    <h6 class="card-title"><%=entry.question %></h6>
+                    <p class="card-text" style="min-height: 13.75rem; max-height: 13.75rem; overflow-y: auto;">
+                        <%= entry.entry %>
+                    </p>
+                    <div class="m-auto border border-bottom-0 position-relative"></div>
+
+                    <div class="d-flex justify-content-between ">
+                        <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"><%= entry.username %> </small></p>
+                        <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"><%= entry.date %> </small></p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <% }) %>
+            
+        </div>
+
+
+

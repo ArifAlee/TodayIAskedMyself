@@ -1,0 +1,74 @@
+
+<!-- EDIT MODAL -->
+
+    <% entries.forEach(entry => { %>
+        
+        <form action="/user/<%=entry.username%>/journal/<%=entry._id %>?_method=PUT" method="POST" novalidate class="validated-form"> 
+        <div class="modal fade" id="edit-modal-<%=entry._id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" name="journal[question]" value="<%=entry.question%>" hidden>
+                    <h1 class="modal-title fs-5 title-edit-modal" id="staticBackdropLabel"><%=entry.question%></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="form-floating modal-body">
+                        <textarea class="form-control lh-lg journal-entry-edit" name="journal[entry]" id="floatingTextarea" style="height:250px;" required minlength="10" maxlength="350"><%=entry.entry%>
+                    </textarea>
+                    <label for="floatingTextarea" class="ms-3 my-3" name="date"><%= new Date().toLocaleDateString("en-GB")%></label>
+                    <input type="text" name="journal[username]" value="<%= currentUser.username %>" hidden>
+                    <input type="text" name="journal[date]" value="<%= new Date().toLocaleDateString("en-GB") %>" hidden>
+                    <input type="text" name="journal[time]" value="<%= new Date().toLocaleTimeString("en-GB", {hour: "2-digit", minute: "2-digit"}) %>" hidden>
+                    <div class="invalid-feedback">
+                        Entry text must be between 10-350 characters
+                    </div>
+                </div>
+                
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success entry-submit-btn">Update</button>
+                    
+                    <%-include("../partials/colorsEdit.ejs") %>
+
+                    <!-- PUBLIC / PRIVATE SELECTION -->
+                     <input type="text" name="journal[status]" value="private" id="entryStatusEdit-<%=entry._id%>" hidden>
+
+                    <div class="btn-group dropend ">
+                        <button type="button" class="btn btn-light status-btn-edit dropdown-toggle" 
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                            <%- include("../partials/privateIcon.ejs") %>
+                    </button>
+                        <ul class="dropdown-menu">
+                            <li class="private-icon-edit ps-2">
+                            <%- include("../partials/privateIcon.ejs") %>
+                            Private
+                        </li>
+                        <li class="public-icon-edit ps-2">
+                            <%- include("../partials/publicIcon.ejs") %>
+                            Public
+                            </li>
+                        </ul>
+                    </div>
+                    </form>
+                    
+                    <form action="/user/<%=currentUser.username%>/journal/<%=entry._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                    </form>
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                <% }); %>
+
+
+<!-- Icons private and public (hidden) -->
+<div id="publicIconTemplateEdit" style="display: none;">
+  <%- include("../partials/publicIcon.ejs") %>
+</div>
+<div id="privateIconTemplateEdit" style="display: none;">
+  <%- include("../partials/privateIcon.ejs") %>
+</div>
+
+
+

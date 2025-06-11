@@ -1,0 +1,167 @@
+<% layout("layout/boilerplate") %>
+<style>
+    .public-icon:hover {
+        cursor: pointer;
+        background-color: lightgray;
+    }
+    .private-icon:hover {
+        cursor: pointer;
+        background-color: lightgray;   
+    }
+    /* for edit modal */
+    .public-icon-edit:hover {
+        cursor: pointer;
+        background-color: lightgray;
+    }
+    .private-icon-edit:hover {
+        cursor: pointer;
+        background-color: lightgray;   
+    }
+    
+    /* JOURNAL ICON HOVER EFFECT */
+    .journal-icon-btn:hover svg {
+        animation: bounce 1s ease-in-out;
+    }
+    @keyframes bounce {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.10); }
+    100% { transform: scale(1); }
+}
+
+</style>
+
+<h1 class="mb-4">Hi <%=currentUser.username%>, ready to get some answers?</h1> 
+<div class="container d-flex justify-content-center">
+<button type="button"
+        class="btn shadow btn-light journal-icon-btn mb-5 rounded-5"
+        style="width: 5rem; height: 5.5rem;"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+    <%-include("./partials/journalIcon.ejs") %>
+</button>
+    
+</div>
+
+    <%- include("./partials/mainModal") %>
+    
+    <section id="journal-entries">
+        <div class="container row justify-content-center">
+            <% entries.forEach((entry) => { %> 
+                <div class="card shadow mb-4 mx-3" style="width: 20rem; background-color:<%=entry.color%>;">
+                    <% if(new Date().toLocaleDateString("en-GB") === entry.date) { %>
+                        <%- include("./partials/editModal") %>
+                        <div class="ms-auto my-2">
+                        <button data-bs-toggle="modal" data-bs-target="#edit-modal-<%=entry._id%>" 
+                            style="background: none; border: none; border-bottom: 1px solid #5d5d5d;">
+                            <%-include("./partials/editIcon.ejs")%>
+                        </button>
+                    </div>
+                <% } %>
+                <div class="card-body" style="justify-self: center; max-width: 286.67px; ; max-height: 384.67px; min-height: 384.67px;">
+                    <h6 class="card-title"><%=entry.question%></h6>
+                    <p class="card-text" style="min-height: 280px; max-height: 280px; overflow-y: auto;">
+                        <%= entry.entry %>
+                    </p>
+                    <div class="m-auto border border-bottom-0 position-relative"></div>
+    
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"><%= entry.date %> </small></p>
+                        <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"> <%=entry.time %> </small></p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <% }) %>
+            
+        </div>
+    </section>
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    const privateIconTemplate = document.getElementById("privateIconTemplate").innerHTML;
+    const publicIconTemplate = document.getElementById("publicIconTemplate").innerHTML;
+    const privateIconTemplateEdit = document.getElementById("privateIconTemplateEdit").innerHTML;
+    const publicIconTemplateEdit = document.getElementById("publicIconTemplateEdit").innerHTML;
+
+    const colorBox = document.querySelector(".color-box");
+    const colorBoxEdit = document.querySelector(".color-box-edit");
+
+    // MAIN MODAL
+        const journalBox = document.querySelector(".journal-entry")
+        const publicIcon = document.querySelector(".public-icon")
+        const privateIcon = document.querySelector(".private-icon")
+        const statusBtn = document.querySelector(".status-btn")
+        const entryStatus = document.querySelector("#entryStatus")  
+
+        colorBox.addEventListener("change", (event) => {
+            const color = event.target.value;
+            event.target.style.backgroundColor = color;
+            journalBox.style.backgroundColor = color;
+        })
+        publicIcon.addEventListener("click", () => {
+            statusBtn.innerHTML = publicIconTemplate;
+            entryStatus.value = "public"
+        })
+        privateIcon.addEventListener("click", () => {
+            statusBtn.innerHTML = privateIconTemplate;
+            entryStatus.value = "private"
+        })
+
+
+
+        //EDIT MODAL
+
+        document.querySelectorAll(".modal").forEach(modal => {
+            const journalBoxEdit = modal.querySelector(".journal-entry-edit")
+            const publicIconEdit = modal.querySelector(".public-icon-edit")
+            const privateIconEdit = modal.querySelector(".private-icon-edit")
+            const statusBtnEdit = modal.querySelector(".status-btn-edit")
+            const entryStatusEdit = modal.querySelector('[id^="entryStatusEdit"]')  
+    
+
+
+        if (colorBoxEdit && journalBoxEdit) {
+            colorBoxEdit.addEventListener("change", (event) => {
+                const color = event.target.value;
+                event.target.style.backgroundColor = color;
+                journalBoxEdit.style.backgroundColor = color;
+            });
+        }
+
+        if (publicIconEdit && statusBtnEdit && entryStatusEdit) {
+            publicIconEdit.addEventListener("click", () => {
+                statusBtnEdit.innerHTML = publicIconTemplateEdit;
+                entryStatusEdit.value = "public";
+            });
+        }
+
+        if (privateIconEdit && statusBtnEdit && entryStatusEdit) {
+            privateIconEdit.addEventListener("click", () => {
+                statusBtnEdit.innerHTML = privateIconTemplateEdit;
+                entryStatusEdit.value = "private";
+            });
+        }
+            
+        });
+    })
+
+
+    
+        // const qInputMain = document.querySelectorAll(".q-input-main")
+        // const qInputEdit = document.querySelectorAll(".q-input-edit")
+        // const mainTitle = document.querySelectorAll(".title-main-modal")
+        // const editTitle = document.querySelectorAll(".title-edit-modal")
+
+        // mainTitle.addEventListener("click", (event) => {
+        //     mainTitle.toggleAttribute("hidden")
+        //     qInputMain.toggleAttribute("hidden")
+        // })
+        // EditTitle.addEventListener("click", (event) => {
+        //     EditTitle.toggleAttribute("hidden")
+        //     qInputEdit.toggleAttribute("hidden")
+        // })
+
+
+</script>
