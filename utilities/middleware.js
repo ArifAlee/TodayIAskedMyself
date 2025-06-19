@@ -1,6 +1,6 @@
-const Entry = require("./models/entry")
-const { journalSchema } = require("./schemas");
-const ExpressError = require("./utilities/expressError")
+const Entry = require("../models/entry")
+const { journalSchema } = require("../schemas");
+const ExpressError = require("./expressError")
 
 
 

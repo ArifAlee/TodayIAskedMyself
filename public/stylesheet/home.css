@@ -1,0 +1,35 @@
+/* body {
+} */
+ h3{
+    color: white;
+
+ }
+
+.nav-link {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0;
+  margin-left: 1rem;
+  border-bottom: 2px solid transparent;
+}
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.info-section {
+    height: 50vh;
+    width: 100vw;
+    position: absolute;
+    background-color: #f4c753;
+}
+.inspo-section {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+  background-color: red;
+}

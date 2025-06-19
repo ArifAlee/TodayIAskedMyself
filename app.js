@@ -11,7 +11,7 @@ const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./models/users")
 
-const {storeReturnTo} = require("./middleware")
+const {storeReturnTo} = require("./utilities/middleware")
 
 const userRoute = require("./routes/journal")
 const loginRegisterRoute = require("./routes/loginRegister")
@@ -27,9 +27,6 @@ app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
-app.get("/", (req, res) => {
-    res.render("index")
-})
 
 
 
@@ -80,6 +77,9 @@ app.use((req, res, next) => {
 app.use("/", loginRegisterRoute)
 app.use("/feed", feedRoute)
 app.use("/user", userRoute)
+app.get("/", (req, res) => {
+    res.render("home")
+})
 
 
 

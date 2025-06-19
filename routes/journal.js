@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { validateEntry, isLoggedIn } = require("../middleware");
+const { validateEntry, isLoggedIn } = require("../utilities/middleware");
 const questions = require("../questions")
+const bcrypt = require("bcrypt")
 
 const User = require("../models/users");
 const Entry = require("../models/entry");
@@ -51,7 +52,6 @@ router
     const entry = new Entry(journal);
     user.entries.push(entry);
     await entry.save();
-    console.log(entry)
     req.flash("success", "New journal entry added!");
     res.redirect(`/user/${entry.username}/journal`);
   });
@@ -60,12 +60,14 @@ router
   .route("/:username/journal/:entryId")
   .put(isLoggedIn, validateEntry, async (req, res) => {
     const { entryId, username } = req.params;
+    const journal = req.body.journal;
     try{
     await Entry.findByIdAndUpdate(
       entryId,
-      { ...req.body.journal },
+      { ...journal },
       {runValidators:true, new: true}
     );
+    console.log(journal)
     req.flash("success", "Entry updated")
     res.redirect(`/user/${username}/journal`);
     } catch(error) {
