@@ -66,4 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+  
+  
+  // REFRESH BUTTON
+  // const refreshBtn = document.querySelector(".refresh-btn")
+  // const modalTitle = document.querySelector(".modal-title")
+  
+  // const question =
+  
+  // refreshBtn.addEventListener("click", () => {
+    
+  // })
+
+
 });

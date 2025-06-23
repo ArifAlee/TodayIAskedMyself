@@ -10,6 +10,7 @@ const ExpressError = require("./utilities/expressError");
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./models/users")
+const questions = require("./questions")
 
 const {storeReturnTo} = require("./utilities/middleware")
 
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success")
   res.locals.error = req.flash("error")
+  res.locals.questionsArray = questions;
   next()  
 }); 
 
@@ -72,13 +74,15 @@ app.use((req, res, next) => {
 //   next()
 // })
 
+const question = (q) => q[Math.floor(Math.random() * q.length)]
 
 //ROUTES
 app.use("/", loginRegisterRoute)
 app.use("/feed", feedRoute)
 app.use("/user", userRoute)
 app.get("/", (req, res) => {
-    res.render("home")
+  const q = question(questions)
+  res.render("home", {question: q})
 })
 
 

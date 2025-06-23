@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheet/infoSection.css">
     <link rel="stylesheet" href="/stylesheet/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
     <title>Today I Asked Myself</title>
 </head>
 
@@ -14,14 +20,40 @@
     <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column bg-dark" data-bs-theme="dark">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-start mb-0">TIAM</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a href="#" class="nav-link active" aria-current="page">Home</a>
-                    <a href="/feed" class="nav-link">Feed</a>
+                <a href="#" class="nav-link active float-start" aria-current="page">TIAM</a>
+                <nav class="nav nav-masthead justify-content-center mb-5 float-end">
+                    <div>
+                        <a href="/feed" class="nav-link feed-btn">
+                            <!-- feed svg -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                                viewBox="0 0 256 256">
+                                <path
+                                    d="M224,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h64a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z">
+                                </path>
+                            </svg></a>
+                    </div>
                     <% if(!currentUser) { %>
                         <a href="/login" class="nav-link">login</a>
                         <a href="/register" class="nav-link">register</a>
                         <% } else { %>
+                            <a href="/user/<%=currentUser.username%>/journal" class="nav-link journal-btn">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="19px" height="20px"
+                                    fill="currentColor" stroke="currentColor" stroke-width="0.25"
+                                    class="bi bi-journal-text">
+                                    <g stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                                        </path>
+                                        <path
+                                            d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
+                                        </path>
+                                        <path
+                                            d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
+                                        </path>
+                                    </g>
+                                </svg>
+
+                            </a>
                             <a href="/logout" class="nav-link">logout</a>
                             <% } %>
                 </nav>
@@ -29,47 +61,98 @@
         </header>
     </div>
 
-    <div class="">
-    <section class="h-50 info-section">
-        <main>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo, at rerum ex, maiores tempore iste
-            dignissimos, nisi unde similique ullam voluptates! Distinctio aut veritatis libero atque facere
-            molestias
-            cum facilis!
-            Illum eum provident facere cumque facilis, accusamus hic asperiores nulla tempore repellat ipsam
-            deleniti
-            voluptates perferendis repellendus reiciendis quis nam fugiat mollitia veniam labore, enim, sed
-            suscipit!
-            Architecto, nulla repellendus!
-            Tempora praesentium modi quia nam aliquid, vel possimus quisquam, explicabo, suscipit voluptate minus et
-            error dolorem hic id odit? Nam numquam nulla tempora saepe libero soluta a nobis ipsum cupiditate.
-        </main>
-    </section>
+    <%-include("partials/homeModal.ejs") %>
 
-    <section class="h-50 inspo-section">
-        <main>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo, at rerum ex, maiores tempore iste
-            dignissimos, nisi unde similique ullam voluptates! Distinctio aut veritatis libero atque facere
-            molestias
-            cum facilis!
-            Illum eum provident facere cumque facilis, accusamus hic asperiores nulla tempore repellat ipsam
-            deleniti
-            voluptates perferendis repellendus reiciendis quis nam fugiat mollitia veniam labore, enim, sed
-            suscipit!
-            Architecto, nulla repellendus!
-            Tempora praesentium modi quia nam aliquid, vel possimus quisquam, explicabo, suscipit voluptate minus et
-            error dolorem hic id odit? Nam numquam nulla tempora saepe libero soluta a nobis ipsum cupiditate.
-        </main>
-    </section>
-</div>
+            <div>
+                <section class="info-section">
+                    <h1 class="mb-5 d-flex justify-content-center">Today I Asked Myself</h1>
+                    <div class="question d-flex justify-content-center mb-4">
+                        <img src="/assets/quotes-svgrepo-com.svg" alt="quote" width="25px">
+                        <span class="mx-4 align-self-center">
+                            <%=question %>
+                        </span>
+                        <img src="/assets/quotes-end-svgrepo-com.svg" alt="end quote" width="25px">
+                    </div>
+                    <div class="d-flex justify-content-center align-self-center mb-5">
+                        <button class="start-btn p-2 px-3 shadow-lg rounded-2" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Start Journaling
+                        </button>
+                    </div>
+
+                    <main>
+                        <section class="cloneable">
+                            <div class="card">
+                                <div data-draw-line="" href="#" class="text-draw card-header w-inline-block">
+                                    <p class="text-draw__p">Write</p>
+                                    <div data-draw-line-box="" class="text-draw__box"></div>
+                                </div>
+                                <div class="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                                    corporis quas beatae maxime porro repudiandae.</div>
+                            </div>
+                            <div class="card">
+                                <div data-draw-line="" href="#" class="text-draw card-header w-inline-block">
+                                    <p class="text-draw__p">Read</p>
+                                    <div data-draw-line-box="" class="text-draw__box"></div>
+                                </div>
+                                <div class="card-body col">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Fugit
+                                    corporis quas beatae maxime porro repudiandae</div>
+                            </div>
+                            <div class="card">
+                                <div data-draw-line="" href="#" class="text-draw card-header w-inline-block">
+                                    <p class="text-draw__p">Reflect</p>
+                                    <div data-draw-line-box="" class="text-draw__box"></div>
+                                </div>
+                                <div class="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                                    corporis quas beatae maxime porro repudiandae.</div>
+                            </div>
+                            <div class="card">
+                                <div data-draw-line="" href="#" class="text-draw card-header w-inline-block">
+                                    <p class="text-draw__p">Share</p>
+                                    <div data-draw-line-box="" class="text-draw__box"></div>
+                                </div>
+                                <div class="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                                    corporis quas beatae maxime porro repudiandae </div>
+                            </div>
+
+                        </section>
+                    </main>
+                </section>
+            </div>
+
+            <div class="mt-5">
+                <section class="inspo-section">
+                    <div class="">
+                        Inspired by Robert Rodriguez, director of 'From Dusk till Dawn'
+                    </div>
+
+                    <iframe width="420" height="315"
+                    src="https://www.youtube.com/watch?v=gDI1-3rkevQ&t=150s">
+                </iframe>
+                <div class="d-flex justify-content-center align-self-center mb-5">
+                    <a href="/register" class="text-decoration-none start-btn p-2 px-3 shadow-lg rounded-2">
+                        Create an account
+                    </a>
+                </div>
+            </section>
+            </div>
 
 
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script>
+        <script src="/js/infoSection.js"></script>
+
+
 </body>
 
 </html>

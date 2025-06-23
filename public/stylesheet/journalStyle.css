@@ -7,7 +7,14 @@ h1 {
 }
 
 .journal-icon-btn {
+  width: 5rem; 
+  height: 5.5rem;
   animation: fadeUp 0.6s ease-in-out;
+}
+
+.edit-btn {
+  background: none; 
+  border: none; border-bottom: 1px solid #5d5d5d;
 }
 
 @keyframes fadeUp {

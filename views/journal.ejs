@@ -5,7 +5,6 @@
 <div class="container d-flex justify-content-center">
 <button type="button"
         class="btn shadow btn-light journal-icon-btn mb-5 rounded-5"
-        style="width: 5rem; height: 5.5rem;"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
     <%-include("./partials/journalIcon.ejs") %>
@@ -22,8 +21,7 @@
                 <div class="card shadow mb-4 mx-3" style="width: 20rem; background-color:<%=entry.color%>;">
                     <% if(new Date().toLocaleDateString("en-GB") === entry.date) { %>
                         <div class="ms-auto my-2">
-                        <button data-bs-toggle="modal" data-bs-target="#edit-modal-<%=entry._id%>" 
-                            style="background: none; border: none; border-bottom: 1px solid #5d5d5d;">
+                        <button data-bs-toggle="modal" class="edit-btn" data-bs-target="#edit-modal-<%=entry._id%>">
                             <%-include("./partials/editIcon.ejs")%>
                         </button>
                     </div>
