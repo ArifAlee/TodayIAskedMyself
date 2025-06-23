@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { validateEntry, isLoggedIn } = require("../utilities/middleware");
 const questions = require("../questions")
-
 const User = require("../models/users");
 const Entry = require("../models/entry");
 
