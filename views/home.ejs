@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheet/infoSection.css">
+    <link rel="stylesheet" href="/stylesheet/drawSVG.css">
     <link rel="stylesheet" href="/stylesheet/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
     <%-include("partials/homeModal.ejs") %>
 
         <div>
-            <section class="info-section">
+            <section class="info-section justify-content-center">
                 <h1 class="mb-5 d-flex justify-content-center">Today I Asked Myself</h1>
                 <div class="question d-flex justify-content-center mb-5">
                     <img src="/assets/quotes-svgrepo-com.svg" alt="quote" width="25px">
@@ -75,17 +75,17 @@
                 </div>
                 <div class="d-flex justify-content-center align-self-center">
                     <button class="start-journal-btn p-2 px-3 shadow-lg rounded-2" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">
-                    Start Journaling
-                </button>
-            </div>
-            
-            <div class="motto" > 
-                <span class="text-draw__p">Daily question for a more thoughtful life</span>
-            </div>
+                        data-bs-target="#staticBackdrop">
+                        Start Journaling
+                    </button>
+                </div>
 
-            <main>
-                <section class="draw-animation">
+                <main class="d-flex justify-content-center flex-wrap">
+                    <div class="motto text-center">
+                        <span>Daily question for a more thoughtful life</span>
+                    </div>
+
+                    <section class="draw-animation">
                         <div class="card">
                             <div data-draw-line="" class="text-draw card-header w-inline-block">
                                 <p class="text-draw__p">Write</p>
@@ -131,7 +131,8 @@
                 <div class="quote d-flex justify-content-center mb-5">
                     <img src="/assets/quotes-svgrepo-com.svg" alt="quote" width="25px">
                     <span class="mx-4 align-self-center">
-                        You go to therapy not for answers, you go for questions, we already have the answers inside of us - Robert Rodriguez
+                        You go to therapy not for answers, you go for questions, we already have the answers inside of
+                        us - Robert Rodriguez
                     </span>
                     <img src="/assets/quotes-end-svgrepo-com.svg" alt="end quote" width="25px">
                 </div>
@@ -142,12 +143,12 @@
                     </a>
                 </div>
             </section>
-            
-            
+
+
             <footer>
                 &copy;Arif Ali 2025
             </footer>
-            
+
         </div>
 
 
