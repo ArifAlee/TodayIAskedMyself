@@ -1,4 +1,3 @@
-const themeBtn = document.querySelector(".theme-btn");
 
 //Date and Time
 const date = new Date().toLocaleDateString("en-GB");
