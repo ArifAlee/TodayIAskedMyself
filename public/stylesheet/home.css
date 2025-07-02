@@ -130,10 +130,10 @@ h1 {
 }
 
 footer {
-  margin-top: 150px;
+  display: flex;
   color: #0d4a4a;
   font-size: 0.8rem;
-  justify-self: center;
+  justify-content: right;
 }
 
 /* -------- */
