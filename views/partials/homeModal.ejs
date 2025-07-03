@@ -8,12 +8,9 @@
                     <div class="modal-header">
                         <input type="text" name="journal[question]" class="q-input-main" value="<%=question%>"
                             placeholder="<%=question%>" hidden>
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                        <h2 class="modal-title fs-5" id="staticBackdropLabel">
                             <%=question%>
-                        </h1>
-                        <button class="bg-body border-0 position-relative ms-auto" onclick="window.location.reload()">
-                            <%-include("./refreshIcon.ejs") %>
-                        </button>
+                        </h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="form-floating modal-body">
@@ -65,7 +62,7 @@
         </div>
     </form>
     <% } else { %>
-        <form action="/user/newUser/journal" method="POST" novalidate class="validated-form">
+        <form action="/" method="POST" novalidate class="validated-form">
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel">
             <div class="modal-dialog modal-dialog-centered ">
@@ -73,12 +70,9 @@
                     <div class="modal-header">
                         <input type="text" name="journal[question]" class="q-input-main" value="<%=question%>"
                             placeholder="<%=question%>" hidden>
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                        <h2 class="modal-title fs-5" id="staticBackdropLabel">
                             <%=question%>
-                        </h1>
-                        <button class="bg-body border-0 position-relative ms-auto" onclick="window.location.reload()">
-                            <%-include("./refreshIcon.ejs") %>
-                        </button>
+                        </h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="form-floating modal-body">
@@ -140,33 +134,3 @@
     </div>
 
 
-    <script>
-        //     const privateIconTemplate = document.getElementById("privateIconTemplate").innerHTML;
-        // const publicIconTemplate = document.getElementById("publicIconTemplate").innerHTML;
-
-        // const colorBox = document.querySelector(".color-box");
-
-        // // MAIN MODAL
-        //     const journalBox = document.querySelector(".journal-entry")
-        //     const publicIcon = document.querySelector(".public-icon")
-        //     const privateIcon = document.querySelector(".private-icon")
-        //     const statusBtn = document.querySelector(".status-btn")
-        //     const entryStatus = document.querySelector("#entryStatus")
-
-        //     colorBox.addEventListener("change", (event) => {
-        //         const color = event.target.value;
-        //         event.target.style.backgroundColor = color;
-        //         journalBox.style.backgroundColor = color;
-        //     })
-        //     publicIcon.addEventListener("click", () => {
-        //         statusBtn.innerHTML = publicIconTemplate;
-        //         entryStatus.value = "public"
-        //     })
-        //     privateIcon.addEventListener("click", () => {
-        //         statusBtn.innerHTML = privateIconTemplate;
-        //         entryStatus.value = "private"
-        //     })
-
-
-
-    </script>

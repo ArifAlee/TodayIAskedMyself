@@ -85,8 +85,6 @@ h1 {
 
 .inspo-section {
   background: linear-gradient(white 5%, #f4c753);
-  display: flex;
-  flex-wrap: wrap;
 }
 .motto {
   margin: 5rem 5rem 0 5rem;
@@ -104,7 +102,6 @@ h1 {
 .quote {
   color: #0d4a4a;
   margin-top: 20%;
-  width: 65%;
   text-align: center;
   justify-self: center;
 }
@@ -185,4 +182,21 @@ footer {
   .card-body {
     font-size: 0.8rem;
   }
+}
+
+
+/* MODAL CSS */
+.modal-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 300;
+  color: #0d4a4a; 
+}
+
+.public-icon:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+.private-icon:hover {
+  cursor: pointer;
+  background-color: lightgray;
 }

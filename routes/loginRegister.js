@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router()
 const passport = require("passport")
 const User = require("../models/users")
+const Entry = require("../models/entry")
 
 
 router.route("/login")
@@ -22,11 +23,18 @@ router.route("/register")
         const {username, email, password} = req.body;
         const user = new User({username, email})
         const registeredUser = await User.register(user, password);
+        if(req.session.homeJournal){
+            req.session.homeJournal.journal.username = username
+            const newEntry = await Entry.insertOne(req.session.homeJournal.journal)
+            await newEntry.save()
+            delete req.session.homeJournal
+        }
         req.login(registeredUser, (error) => {
             if (error) return next(error);
             req.flash("success", "Welcome to Rimi, your personal journal")
             res.redirect(`/user/${username}/journal`)
         })
+        
     })
 
   router.get("/logout", (req, res, next) => {

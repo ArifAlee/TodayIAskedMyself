@@ -150,10 +150,15 @@ const question = (q) => q[Math.floor(Math.random() * q.length)];
 app.use("/", loginRegisterRoute);
 app.use("/feed", feedRoute);
 app.use("/user", userRoute);
+//HOME ROUTE
 app.get("/", (req, res) => {
   const q = question(questions);
   res.render("home", { question: q });
 });
+app.post("/", (req, res) => {
+  req.session.homeJournal = req.body;
+  res.redirect("/register")
+})
 
 app.all(/(.*)/, (req, res, next) => {
   next(new ExpressError("Page not found", 404));
