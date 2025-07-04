@@ -65,27 +65,12 @@ h1 {
   transition: 0.4s;
 }
 
+/* INFO SECTION */
+
 .info-section {
   background: linear-gradient(#f4c753 25%, white);
 }
 
-.card {
-  /* background: rgba(255, 255, 255, 0.2); */
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.card-header {
-  width: 100% !important;
-}
-
-.inspo-section {
-  background: linear-gradient(white 5%, #f4c753);
-}
 .motto {
   margin: 5rem 5rem 0 5rem;
 }
@@ -98,15 +83,83 @@ h1 {
   animation: fadeUp 0.8s ease-in;
 }
 
+.motto-svg {
+  margin-top:-8px;
+  /* border: 2px solid red; */
+  max-width: 30rem;
+  max-height: 4.5rem;
+  overflow: hidden;
+}
+/* .motto-svg svg {
+
+} */
+
+
+.new-time-discover {
+  color: #0d4a4a;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-time-discover p {
+  margin-top: 1rem;
+}
+
+.new-time-discover img {
+  animation: fadeLeft 0.8s ease-in;
+}
+.new-time-discover p {
+  animation: fadeRight 0.8s ease-in;
+}
+
+.rwrs:nth-of-type(1) {
+padding:5px;
+margin:0px 5px;
+border-bottom: 2px solid #f2f2f2;
+}
+.rwrs:nth-of-type(2) {
+padding:5px;
+margin:0px 5px;
+border-bottom: 2px solid #f2f2f2;
+}
+.rwrs:nth-of-type(3) {
+padding:5px;
+margin:0px 5px;
+border-bottom: 2px solid #f2f2f2;
+}
+.rwrs:nth-of-type(4) {
+padding:5px;
+margin:0px 5px;
+border-bottom: 2px solid #f2f2f2;
+}
+
+.rwrs {
+  animation: fadeUp 0.8s ease-in;
+}
+
+.card-header {
+  width: 100% !important;
+}
+
+.card-body {
+  color: #0d4a4a;
+}
+
+/* INSPO SECTION */
+
+.inspo-section {
+  background: linear-gradient(white 5%, #f4c753);
+}
 
 .quote {
   color: #0d4a4a;
-  margin-top: 20%;
+  margin-top: 10%;
   text-align: center;
   justify-self: center;
 }
+
 .quote span {
-  margin-top: 25px;
+  margin-top:2rem;
 }
 
 .create-acc-btn {
@@ -135,6 +188,38 @@ footer {
 
 /* -------- */
 
+@keyframes lineDraw {
+  0% { 
+    width: 0%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  } 
+}
+
+@keyframes fadeLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeRight {
+  0%{
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes fadeUp {
   0% {
     opacity: 0;
@@ -156,7 +241,9 @@ footer {
   }
 }
 
+
 @media (max-width: 600px) {
+
   .motto {
     margin-bottom: 3rem;
   }
@@ -182,6 +269,14 @@ footer {
   .card-body {
     font-size: 0.8rem;
   }
+}
+
+@media (min-width: 900px) {
+/* READ WRITE REFLECT SHARE -rwrs */
+.rwrs {
+  min-width: 250px;
+  min-height: 290px;
+}
 }
 
 
