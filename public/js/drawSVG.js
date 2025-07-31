@@ -13,7 +13,7 @@ function initDrawRandomUnderline() {
     svgEl.setAttribute('class', 'text-draw__box-svg');
     svgEl.setAttribute('preserveAspectRatio', 'none');
     svgEl.querySelectorAll('path').forEach(path => {
-      path.setAttribute('stroke', 'currentColor');
+      path.setAttribute('stroke', '#d95f5f');
     });
   }
 
