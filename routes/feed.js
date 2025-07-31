@@ -15,7 +15,8 @@ const randomQuestion = (req, res, next) => {
 
 router.get("/", randomQuestion, async (req, res) => {
   try {
-    const feedEntries = await Entry.find({ status: "public" });
+    const entries = (await Entry.find({ status: "public" })).reverse();
+    const feedEntries = entries.map(entry => entry.decryptEntry())
     const question = req.question;
     res.render("feed", {
       question,
