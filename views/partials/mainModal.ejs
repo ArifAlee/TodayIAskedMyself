@@ -10,14 +10,15 @@
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
                         <%=question%>
                     </h1>
-                    <button class="bg-body border-0 position-relative ms-auto" onclick="window.location.reload()">
+                    <!-- NOT WORKING -->
+                    <!-- <button class="bg-body border-0 position-relative ms-auto" onclick="refreshPage()">
                         <%-include("./refreshIcon.ejs") %>
-                    </button>
+                    </button> -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="form-floating modal-body">
                     <textarea class="form-control lh-lg journal-entry" name="journal[entry]" id="floatingTextarea"
-                        style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="350"
+                        style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="498"
                         required></textarea>
                     <label for="floatingTextarea" class="ms-3 my-3" name="date">
                         <%=new Date().toLocaleDateString("en-GB")%>
@@ -27,7 +28,7 @@
                     <input type="text" name="journal[time]" value="<%= new Date().toLocaleTimeString("en-GB", {hour: "2-digit" , minute: "2-digit" }) %>" hidden>
 
                     <div class="invalid-feedback">
-                        Entry text must be between 10-350 characters
+                        Entry text must be between 10-500 characters
                     </div>
                 </div>
 
@@ -74,32 +75,8 @@
 
 
 <script>
-    //     const privateIconTemplate = document.getElementById("privateIconTemplate").innerHTML;
-    // const publicIconTemplate = document.getElementById("publicIconTemplate").innerHTML;
-
-    // const colorBox = document.querySelector(".color-box");
-
-    // // MAIN MODAL
-    //     const journalBox = document.querySelector(".journal-entry")
-    //     const publicIcon = document.querySelector(".public-icon")
-    //     const privateIcon = document.querySelector(".private-icon")
-    //     const statusBtn = document.querySelector(".status-btn")
-    //     const entryStatus = document.querySelector("#entryStatus")
-
-    //     colorBox.addEventListener("change", (event) => {
-    //         const color = event.target.value;
-    //         event.target.style.backgroundColor = color;
-    //         journalBox.style.backgroundColor = color;
-    //     })
-    //     publicIcon.addEventListener("click", () => {
-    //         statusBtn.innerHTML = publicIconTemplate;
-    //         entryStatus.value = "public"
-    //     })
-    //     privateIcon.addEventListener("click", () => {
-    //         statusBtn.innerHTML = privateIconTemplate;
-    //         entryStatus.value = "private"
-    //     })
-
-
-
+    const btnClose = document.querySelector(".btn-close")
+    function refreshPage(){
+        btnClose.click()
+} 
 </script>

@@ -6,7 +6,7 @@ border - #D95F5F
 
 * {
   font-family: "Geist", sans-serif;
-  /* color: #0d4a4a; */
+  color: #0d4a4a;
 }
 .container-fluid {
   background-color: #f4c753 !important;
@@ -17,8 +17,8 @@ border - #D95F5F
 }
 
 .nav-link {
-  font-weight: 500;
   color: #0d4a4a;
+  font-weight: 500;
   padding: 0.25rem 0;
   margin-left: 1rem;
   border-bottom: 2px solid transparent;
@@ -28,13 +28,11 @@ border - #D95F5F
   color: #fdf6e3;
   border-bottom: 2px solid #d95f5f;
 }
-.feed-btn {
+.feed-btn, .journal-btn, .logout-btn {
+  padding: auto;
   margin-top: -1.5px;
 }
 
-.journal-btn {
-  margin-top: -1.5px;
-}
 
 h1 {
   font-family: "Playfair Display", serif;
@@ -84,15 +82,13 @@ h1 {
 }
 
 .motto-svg {
-  margin-top:-8px;
+  margin-top:-7px;
   /* border: 2px solid red; */
   max-width: 30rem;
   max-height: 4.5rem;
   overflow: hidden;
+  left:0;
 }
-/* .motto-svg svg {
-
-} */
 
 
 .new-time-discover {

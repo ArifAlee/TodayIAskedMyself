@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+const {encrypt, decrypt} = require("../utilities/encryptor")
 
 const entrySchema = new Schema({
   username: {
@@ -12,8 +12,9 @@ const entrySchema = new Schema({
     required: true,
   },
   question: {
-    type:[String]
-  },
+  type: String,
+  required: true
+},
   date: {
     type: String,
     required: true,
@@ -34,7 +35,6 @@ const entrySchema = new Schema({
       "#e2e3e5",
       "#d1e7dd",
       "#cff4fc",
-      "#fff3cd",
       "#f8d7da",
       "#9eeaf9",
       "#f1aeb5",
@@ -46,6 +46,25 @@ const entrySchema = new Schema({
     required: true,
   },
 });
+
+entrySchema.pre("save", function(next){
+  if(this.isModified("entry")){
+    this.entry = encrypt(this.entry);
+  }
+  next();
+})
+
+entrySchema.methods.decryptEntry = function(){
+  if (this.entry) {
+    try {
+      this.entry = decrypt(this.entry);
+    } catch (err) {
+      console.error("Decryption failed for entry ID:", this._id, err);
+    }
+  }
+  return this;
+}
+
 
 const Entry = mongoose.model("Entry", entrySchema);
 

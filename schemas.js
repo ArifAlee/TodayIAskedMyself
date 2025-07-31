@@ -1,9 +1,9 @@
 const Joi = require("joi")
 
 module.exports.journalSchema = Joi.object({
-    journal : Joi.object({
+      journal:Joi.object({
       username:Joi.string().required(),
-      entry:Joi.string().max(350).min(10).required(),
+      entry:Joi.string().min(10).max(550).required(),
       date:Joi.string().required().max(10),
       time:Joi.string().required().max(5),
       color:Joi.string().required().max(7),

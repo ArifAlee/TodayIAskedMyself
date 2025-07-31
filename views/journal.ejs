@@ -1,7 +1,8 @@
 <% layout("layout/boilerplate") %>
 <link rel="stylesheet" href="/stylesheet/journalStyle.css">
 
-<h1 class="mb-4">Hi <%=currentUser.username%>, ready to get some answers?</h1> 
+<sup class="text-muted text-center mb-3 position-relative">Entries encrypted upon posting &#x1F512;  </sup> 
+<h3 class="text-center p-2">Hey <%=currentUser.username%>, what will you ask yourself today?</h3>
 <div class="container d-flex justify-content-center">
 <button type="button"
         class="btn shadow btn-light journal-icon-btn mb-5 rounded-5"
@@ -18,7 +19,7 @@
     <section id="journal-entries">
         <div class="container row justify-content-center">
             <% entries.forEach((entry) => { %> 
-                <div class="card shadow mb-4 mx-3" style="width: 20rem; background-color:<%=entry.color%>;">
+                <div class="card shadow mb-4 ms-4" style="width: 20rem; background-color:<%=entry.color%>;">
                     <% if(new Date().toLocaleDateString("en-GB") === entry.date) { %>
                         <div class="ms-auto my-2">
                         <button data-bs-toggle="modal" class="edit-btn" data-bs-target="#edit-modal-<%=entry._id%>">
@@ -27,7 +28,7 @@
                     </div>
                 <% } %>
                 <div class="card-body">
-                    <h6 class="card-title"><%=entry.question%></h6>
+                    <h6 class="card-title"><strong><%=entry.question%></strong></h6>
                     <p class="card-text" style="min-height: 280px; max-height: 280px; overflow-y: auto;">
                         <%= entry.entry %>
                     </p>

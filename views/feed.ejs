@@ -4,18 +4,18 @@
     <%-include("./partials/mainModal") %>
 <% } %>
 
-    <div class="container">
-        <h1 class="mb-5">See how others are doing today</h1>
-    </div>
+    <h3 class="text-center p-2 mb-5">Share your entries<br> 
+        Vulnerability is a super power it, strengthens your bond with yourself</h3>
 
     <div class="container row justify-content-center">
             <% feedEntries.forEach((entry) => { %> 
-                <div class="card rounded-0 shadow mb-4 mx-3" style="width: 20rem; background-color:<%=entry.color%>;">
+                <div class="card rounded-0 shadow mb-4 ms-4" style="width: 20rem; background-color:<%=entry.color%>;">
                     <div class="card-body">
                         <% let rand = Math.floor(Math.random() * 9) +1 %>
                         <%-include(pinPartial + rand)%>
 
                     <h6 class="card-title"><%=entry.question %></h6>
+                    <hr class="mb-1 mt-1">
                     <p class="card-text">
                         <%= entry.entry %>
                     </p>

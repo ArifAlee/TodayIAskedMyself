@@ -1,13 +1,28 @@
 <% layout("layout/boilerplate") %>
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading"><%=err.message %></h4>
-            <% if(process.env.NODE_ENV !== "production") { %>
-            <p><%=err.stack %></p>
-            <% } %>
-            <hr>
-            <p class="mb-0"><%= err.status %></p>
-          </div>
-    </div>
+<style>
+    *{
+        font-family: "Geist", sans-serif;
+        color: black;
+    }
+    body{
+        background:whitesmoke;
+    }
+
+</style>
+<div class="d-flex justify-content-center">
+  <div class="alert alert-light text-center" data-bs-theme="light" role="alert">
+    <!-- <h4 class="alert-heading"><%= err.message %></h4> -->
+
+    <% if (process.env.NODE_ENV !== "production") { %>
+      <p><%= err.stack %></p>
+    <% } else { %>
+      <h4 class="mt-5 mb-3">Something went wrong...</h4>
+      <div>
+        <img src="/assets/lofi-sleeping.png" alt="something went wrong" aria-label="something went wrong">
+      </div>
+    <% } %>
+
+    <hr>
+    <p class="mb-0"><%= err.status %></p>
+  </div>
 </div>

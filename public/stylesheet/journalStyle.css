@@ -1,5 +1,12 @@
+body{
+  background: #F4C753;
+  background: linear-gradient(180deg, rgba(244, 199, 83, 1) 50%, rgba(255, 255, 255, 1) 90%) no-repeat;
+}
 .card {
   animation: fadeUp 0.8s ease-in-out;
+}
+sup {
+  margin-top:-3em;
 }
 
 h1 {
@@ -7,14 +14,21 @@ h1 {
 }
 
 .journal-icon-btn {
-  width: 5rem; 
-  height: 5.5rem;
+  border: 3.5px solid rgba(210, 185, 145, 0.434);
+  width: 4rem;
+  height: 4rem;
   animation: fadeUp 0.6s ease-in-out;
 }
 
 .edit-btn {
-  background: none; 
-  border: none; border-bottom: 1px solid #5d5d5d;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #5d5d5d;
+}
+
+.edit-btn:hover svg{
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeUp {

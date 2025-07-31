@@ -38,10 +38,11 @@ router
   .route("/:username/journal")
   .get(isLoggedIn, randomQuestion, async (req, res) => {
     const { username } = req.params;
-    const entries = (await Entry.find({ username: username })).reverse();
+    const journalEntries = (await Entry.find({ username: username })).reverse();
+    const entries = journalEntries.map(entry => entry.decryptEntry())
     req.session.user = username;
     const question = req.question
-    res.render("journal", { entries, question });
+    res.render("journal", {entries, question });
   })
   .post(isLoggedIn, randomColor, validateEntry, async (req, res) => {
     const username = req.params.username;
