@@ -1,6 +1,6 @@
 body{
   background: #F4C753;
-  background: linear-gradient(180deg, rgba(244, 199, 83, 1) 50%, rgba(255, 255, 255, 1) 90%) no-repeat;
+  background: linear-gradient(180deg, rgba(244, 199, 83, 1) 350px, rgba(255, 255, 255, 1) 650px) no-repeat;
 }
 .card {
   animation: fadeUp 0.8s ease-in-out;
