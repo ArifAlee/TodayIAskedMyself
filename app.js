@@ -21,7 +21,7 @@ const MongoStore = require("connect-mongo");
 
 const { storeReturnTo } = require("./utilities/middleware");
 
-const userRoute = require("./routes/journal");
+const journalRoute = require("./routes/journal");
 const loginRegisterRoute = require("./routes/loginRegister");
 const feedRoute = require("./routes/feed");
 
@@ -149,7 +149,7 @@ const question = (q) => q[Math.floor(Math.random() * q.length)];
 //ROUTES
 app.use("/", loginRegisterRoute);
 app.use("/feed", feedRoute);
-app.use("/user", userRoute);
+app.use("/user", journalRoute);
 //HOME ROUTE
 app.get("/", (req, res) => {
   const q = question(questions);

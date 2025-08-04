@@ -1,0 +1,29 @@
+<div class="modal fade" id="questionsModal" aria-hidden="true" aria-labelledby="questionsModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Simple or Specific Questions?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="text-center ">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="questionType" id="simple" value="simple">
+                                <label class="form-check-label" for="simple">Simple questions</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="questionType" id="specific"
+                                    value="specific" checked>
+                                <label class="form-check-label" for="specific">Thoughtful questions</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="next-btn d-grid p-3">
+                <button type="button" id="nextQuestionBtn" class="btn btn-outline-dark">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

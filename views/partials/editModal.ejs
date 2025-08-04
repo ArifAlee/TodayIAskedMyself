@@ -24,11 +24,11 @@
                         Entry text must be between 10-500 characters
                     </div>
                 </div>
+                <%-include("../partials/colorsEdit.ejs", { entry: entry }) %>
                 
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="submit" class="btn btn-success entry-submit-btn">Update</button>
                     
-                    <%-include("../partials/colorsEdit.ejs", { entry: entry }) %>
 
                     <!-- PUBLIC / PRIVATE SELECTION -->
                      <input type="text" name="journal[status]" value="private" id="entryStatusEdit-<%=entry._id%>" hidden>

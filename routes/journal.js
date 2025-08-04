@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { validateEntry, isLoggedIn } = require("../utilities/middleware");
 const questions = require("../questions")
+const simpleQuestions = require("../simpleQuestions")
 const User = require("../models/users");
 const Entry = require("../models/entry");
 
@@ -9,6 +10,12 @@ const randomQuestion = (req, res, next) => {
   let random = Math.floor(Math.random() * questions.length)
   //add a check to database for duplicate questions
   req.question = questions[random]
+  next()
+}
+const randSimpleQuestion = (req, res, next) => {
+  let random = Math.floor(Math.random() * simpleQuestions.length)
+  //add a check to database for duplicate questions
+  req.simpleQuestion = simpleQuestions[random]
   next()
 }
 
@@ -35,14 +42,30 @@ const randomColor = (req, res, next) => {
 }
 
 router
+  .route("/api/question")
+  .get(randomQuestion, async (req, res) => {
+    const question = req.question;
+    res.json(question);
+  });
+
+router
+  .route("/api/simplequestion")
+  .get(randSimpleQuestion, async (req, res) => {
+    const simpleQuestion = req.simpleQuestion;
+    res.json(simpleQuestion); 
+  });
+
+
+router
   .route("/:username/journal")
-  .get(isLoggedIn, randomQuestion, async (req, res) => {
+  .get(isLoggedIn,randSimpleQuestion, randomQuestion, async (req, res) => {
     const { username } = req.params;
     const journalEntries = (await Entry.find({ username: username })).reverse();
     const entries = journalEntries.map(entry => entry.decryptEntry())
     req.session.user = username;
-    const question = req.question
-    res.render("journal", {entries, question });
+    const question = req.question;
+    const simpleQuestion = req.simpleQuestion;
+    res.render("journal", {entries, question, simpleQuestion });
   })
   .post(isLoggedIn, randomColor, validateEntry, async (req, res) => {
     const username = req.params.username;

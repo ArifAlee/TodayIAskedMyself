@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const privateIconTemplate = document.getElementById(
     "privateIconTemplate"
@@ -21,11 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusBtn = document.querySelector(".status-btn");
   const entryStatus = document.querySelector("#entryStatus");
 
-  colorBox.addEventListener("change", (event) => {
-    const color = event.target.value;
-    event.target.style.backgroundColor = color;
-    journalBox.style.backgroundColor = color;
-  });
+
   publicIcon.addEventListener("click", () => {
     statusBtn.innerHTML = publicIconTemplate;
     entryStatus.value = "public";
@@ -67,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
+
   
   // REFRESH BUTTON
   // const refreshBtn = document.querySelector(".refresh-btn")

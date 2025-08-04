@@ -7,12 +7,13 @@
 <button type="button"
         class="btn shadow btn-light journal-icon-btn mb-5 rounded-5"
         data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop">
+        data-bs-target="#questionsModal">
     <%-include("./partials/journalIcon.ejs") %>
 </button>
     
 </div>
 
+<%- include("./partials/questionsModal") %>
 <%- include("./partials/mainModal") %>
 <%- include("./partials/editModal") %>
     
@@ -20,8 +21,14 @@
         <div class="container row justify-content-center">
             <% entries.forEach((entry) => { %> 
                 <div class="card shadow mb-4 ms-4" style="width: 20rem; background-color:<%=entry.color%>;">
+                    <div class="d-flex justify-content-between mt-2">
+                    <% if (entry.status === "private") { %>
+                        <%-include("./partials/mutedPrivateIcon.ejs")%>
+                        <% } else { %>
+                            <%-include("./partials/mutedPublicIcon.ejs")%>
+                            <% } %>
+
                     <% if(new Date().toLocaleDateString("en-GB") === entry.date) { %>
-                        <div class="ms-auto my-2">
                         <button data-bs-toggle="modal" class="edit-btn" data-bs-target="#edit-modal-<%=entry._id%>">
                             <%-include("./partials/editIcon.ejs")%>
                         </button>
@@ -50,3 +57,4 @@
 
 
     <script src="/js/modalsJS.js"></script>
+    <script src="/js/questionType.js"></script>

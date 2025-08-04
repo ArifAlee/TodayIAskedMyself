@@ -1,0 +1,17 @@
+.bi {
+  width: 1rem;
+  height: 1rem;
+}
+.msg {
+  animation: fadeDown 0.7s ease-in-out;
+}
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

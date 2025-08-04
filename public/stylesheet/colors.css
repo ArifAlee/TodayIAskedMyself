@@ -1,0 +1,68 @@
+.color-swatch-picker {
+    padding: 10px;
+    max-width: 280px; /* Max width for the picker, adjust as needed */
+    margin: 0 auto; /* Center the picker */
+}
+
+.swatch-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows swatches to wrap to the next line */
+    gap: 5px; /* Space between swatches */
+    justify-content: center; /* Center swatches horizontally */
+    padding: 5px;
+}
+
+.color-swatch-item {
+    cursor: pointer;
+    border-radius: 50%;
+    /* We'll control size and border within the .color-swatch itself */
+    flex-shrink: 0; /* Prevent items from shrinking below their content size */
+    flex-basis: calc(25% - 10px); /* Roughly 4 items per row, accounting for gap */
+    max-width: 45px; /* Maximum width for each item on larger screens */
+}
+
+.color-swatch {
+    width: 30px; /* Fixed size for the circular swatch */
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent; /* Transparent border by default */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; /* For the random color icon */
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Smooth hover and selection effects */
+}
+
+.color-swatch:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.color-swatch.selected {
+    border-color: #007bff; /* Blue border for the selected color */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Glowing effect for selected */
+}
+
+.random-color {
+    background-color: #6c757d;
+    color: white;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.status{
+    margin-top: -30px;
+    margin-right:50px !important;
+}
+
+/* Media query for smaller screens (e.g., mobile) if you want different behavior */
+@media (max-width: 480px) {
+    .color-swatch-item {
+        flex-basis: calc(33.33% - 10px); /* 3 items per row on very small screens */
+    }
+}
