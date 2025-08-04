@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-floating modal-body">
                         <textarea class="form-control lh-lg journal-entry" name="journal[entry]" id="floatingTextarea"
-                            style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="350"
+                            style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="500"
                             required></textarea>
                         <label for="floatingTextarea" class="ms-3 my-3" name="date">
                             <%=new Date().toLocaleDateString("en-GB")%>
@@ -25,37 +25,37 @@
                         <input type="text" name="journal[time]" value="<%= new Date().toLocaleTimeString("en-GB",{hour: "2-digit", minute: "2-digit" }) %>" hidden>
 
                         <div class="invalid-feedback">
-                            Entry text must be between 10-350 characters
+                            Entry text must be between 10-500 characters
                         </div>
                     </div>
 
                     <div class="modal-footer d-flex justify-content-between">
-                        <button type="submit" class="btn btn-success entry-submit-btn">Submit</button>
 
                         <%-include("../partials/colors.ejs") %>
 
                             <!-- PUBLIC / PRIVATE SELECTION -->
                             <input type="text" name="journal[status]" value="private" id="entryStatus" hidden>
 
-                            <div class="btn-group dropend ">
-                                <button type="button" class="btn btn-light status-btn dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="btn-group status dropdown-center ">
+                            <button type="button" class="btn btn-light status-btn dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <%- include("../partials/privateIcon.ejs") %>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="private-icon ps-2">
                                     <%- include("../partials/privateIcon.ejs") %>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="private-icon ps-2">
-                                        <%- include("../partials/privateIcon.ejs") %>
-                                            Private
-                                    </li>
-                                    <li class="public-icon ps-2">
-                                        <%- include("../partials/publicIcon.ejs") %>
-                                            Public
+                                        Private
+                                </li>
+                                <li class="public-icon ps-2">
+                                    <%- include("../partials/publicIcon.ejs") %>
+                                        Public
                                     </li>
                                 </ul>
                             </div>
 
-
-
+                    </div>
+                    <div class="d-grid p-3">
+                        <button type="submit" class="btn btn-success entry-submit-btn">Submit</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-floating modal-body"> 
                         <textarea class="form-control lh-lg journal-entry" name="journal[entry]" id="floatingTextarea"
-                            style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="350"
+                            style="height:250px ;" placeholder="Write journal entry here" minlength="10" maxlength="500"
                             required></textarea>
                         <label for="floatingTextarea" class="ms-3 my-3" name="date">
                             <%=new Date().toLocaleDateString("en-GB")%>
@@ -85,39 +85,41 @@
                         <input type="text" name="journal[username]" value="newUser" hidden>
                         <input type="text" name="journal[date]" value="<%= new Date().toLocaleDateString("en-GB") %>" hidden>
                         <input type="text" name="journal[time]" value="<%= new Date().toLocaleTimeString("en-GB",{hour: "2-digit", minute: "2-digit" }) %>" hidden>
-
                         <div class="invalid-feedback">
-                            Entry text must be between 10-350 characters
+                            Entry text must be between 10-500 characters
                         </div>
                     </div>
 
                     <div class="modal-footer d-flex justify-content-between">
-                        <button type="submit" class="btn btn-success entry-submit-btn">Submit</button>
-
+                        
                         <%-include("../partials/colors.ejs") %>
-
-                            <!-- PUBLIC / PRIVATE SELECTION -->
+                        
+                        <!-- PUBLIC / PRIVATE SELECTION -->
                             <input type="text" name="journal[status]" value="private" id="entryStatus" hidden>
-
-                            <div class="btn-group dropend ">
-                                <button type="button" class="btn btn-light status-btn dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                            
+                        <div class="btn-group status dropdown-center ">
+                            <button type="button" class="btn btn-light status-btn dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <%- include("../partials/privateIcon.ejs") %>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="private-icon ps-2">
                                     <%- include("../partials/privateIcon.ejs") %>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="private-icon ps-2">
-                                        <%- include("../partials/privateIcon.ejs") %>
-                                            Private
-                                    </li>
-                                    <li class="public-icon ps-2">
-                                        <%- include("../partials/publicIcon.ejs") %>
-                                            Public
+                                        Private
+                                </li>
+                                <li class="public-icon ps-2">
+                                    <%- include("../partials/publicIcon.ejs") %>
+                                        Public
                                     </li>
                                 </ul>
+                            </div>
                             </div>
 
 
 
+                            <div class="d-grid p-3">
+                                <button type="submit" class="btn btn-success entry-submit-btn">Submit</button>
+                            </div>
                     </div>
                 </div>
             </div>

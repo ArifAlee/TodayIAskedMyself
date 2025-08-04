@@ -1,9 +1,8 @@
 
 <!-- EDIT MODAL -->
 
-    <% entries.forEach(entry => { %>
-        
-        <form action="/user/<%=entry.username%>/journal/<%=entry._id %>?_method=PUT" method="POST" novalidate class="validated-form"> 
+<% entries.forEach(entry => { %>
+    <form action="/user/<%=entry.username%>/journal/<%=entry._id %>?_method=PUT" method="POST" novalidate class="validated-form"> 
         <div class="modal fade" id="edit-modal-<%=entry._id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel">
         <div class="modal-dialog modal-dialog-centered ">
@@ -69,6 +68,5 @@
 <div id="privateIconTemplateEdit" style="display: none;">
   <%- include("../partials/privateIcon.ejs") %>
 </div>
-
 
 

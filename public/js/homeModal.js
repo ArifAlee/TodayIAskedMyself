@@ -6,20 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("publicIconTemplate").innerHTML;
 
 
-  const colorBox = document.querySelector(".color-box");
 
   // MAIN MODAL
-  const journalBox = document.querySelector(".journal-entry");
   const publicIcon = document.querySelector(".public-icon");
   const privateIcon = document.querySelector(".private-icon");
   const statusBtn = document.querySelector(".status-btn");
   const entryStatus = document.querySelector("#entryStatus");
 
-  colorBox.addEventListener("change", (event) => {
-    const color = event.target.value;
-    event.target.style.backgroundColor = color;
-    journalBox.style.backgroundColor = color;
-  });
+
   publicIcon.addEventListener("click", () => {
     statusBtn.innerHTML = publicIconTemplate;
     entryStatus.value = "public";

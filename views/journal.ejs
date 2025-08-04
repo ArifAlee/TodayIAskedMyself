@@ -17,8 +17,8 @@
 <%- include("./partials/mainModal") %>
 <%- include("./partials/editModal") %>
     
-    <section id="journal-entries">
-        <div class="container row justify-content-center">
+<section id="journal-entries">
+    <div class="container row justify-content-center">
             <% entries.forEach((entry) => { %> 
                 <div class="card shadow mb-4 ms-4" style="width: 20rem; background-color:<%=entry.color%>;">
                     <div class="d-flex justify-content-between mt-2">
@@ -32,15 +32,15 @@
                         <button data-bs-toggle="modal" class="edit-btn" data-bs-target="#edit-modal-<%=entry._id%>">
                             <%-include("./partials/editIcon.ejs")%>
                         </button>
+                        <% } %>
                     </div>
-                <% } %>
                 <div class="card-body">
                     <h6 class="card-title"><strong><%=entry.question%></strong></h6>
                     <p class="card-text" style="min-height: 280px; max-height: 280px; overflow-y: auto;">
                         <%= entry.entry %>
                     </p>
                     <div class="m-auto border border-bottom-0 position-relative"></div>
-    
+                    
                     <div class="d-flex justify-content-between">
                         <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"><%= entry.date %> </small></p>
                         <p class="card-text d-flex justify-content-end"><small class="text-body-secondary"> <%=entry.time %> </small></p>
@@ -50,8 +50,8 @@
             </div>
             
             <% }) %>
-            
         </div>
+        
     </section>
 
 
